@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
+import Form from './components/Form';
+import Navbar from './components/Navbar';
+import React, {useState} from 'react'
 
 function App() {
+  const[mode,setMode] = useState('light');
+  const[text,setText] = useState("DarkMode");
+  // const [style,setStyle] = useState({
+  //   backgroundColor: 'white',
+  //   color: 'black'
+  // });
+  const changemode=()=>{
+    if (mode === 'light'){
+      setMode('dark');
+      document.body.style.backgroundColor ='#053049';
+      setText("LightMode");
+      // setStyle({
+      //   backgroundColor: 'black',
+      //   color:'white'
+      // })
+    }
+    else{
+      setMode('light');
+      document.body.style.backgroundColor= 'white';
+      setText("DarkMode");
+      // setStyle({
+      //   backgroundColor: 'white',
+      //   color:'black'
+      // })
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <Navbar changemode={changemode} text={text} mode={mode}></Navbar>
+    <div className="container">
+      <Form mode={mode}></Form>
     </div>
+    </>
   );
 }
 
