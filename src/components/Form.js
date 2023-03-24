@@ -1,4 +1,5 @@
 import React , {useState}from 'react'
+import Alert from './Alert';
 import Count from './Count';
 // import Theme from './Theme';
 
@@ -31,7 +32,8 @@ export default function Form(props) {
     var newText = text.toUpperCase();
     // setText(newText)
     if (newText==txt){
-      alert ("This is already in Uppercase")
+      // alert ("This is already in Uppercase")
+      
     }
     else {
       setText(newText)
@@ -41,7 +43,7 @@ export default function Form(props) {
     var txt = text;
     var nw = text.toLocaleLowerCase();
     if (txt == nw){
-      alert ("This is already in Lowercase");
+      alert ("Already in Lowercase")
     }
     else {
       setText(nw);
@@ -80,7 +82,9 @@ const makeclr = ()=>{
       <button className="btn btn-primary position-relative py-2 px-4 text-bg-dark border border-dark rounded-pill mt-3 ms-3" onClick={makeclr} type="submit">Clear All</button>
       {/* <button className="btn btn-primary position-relative py-2 px-4 text-bg-dark border border-dark rounded-pill mt-3 ms-3" onClick={drkmde} type="submit">{darkmode}</button> */}
     </div>
-    {(showcnt)?(<Count text= {text} mode1 ={props.mode}></Count>) : (null) }
+    <div >
+      {(showcnt)?(<Count text= {text} mode1 ={props.mode}></Count>) : (null) }
+    </div>
     </>
   )
 }

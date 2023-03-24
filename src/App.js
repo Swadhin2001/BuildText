@@ -2,15 +2,18 @@
 // import './App.css';
 import Form from './components/Form';
 import Navbar from './components/Navbar';
+import Alert from './components/Alert';
 import React, {useState} from 'react'
 
 function App() {
   const[mode,setMode] = useState('light');
   const[text,setText] = useState("DarkMode");
+  const[altext,setAlext] = useState("DarkMode");
   // const [style,setStyle] = useState({
   //   backgroundColor: 'white',
   //   color: 'black'
   // });
+
   const changemode=()=>{
     if (mode === 'light'){
       setMode('dark');
@@ -34,8 +37,9 @@ function App() {
   return (
     <>
     <Navbar changemode={changemode} text={text} mode={mode}></Navbar>
+    <Alert alertText={altext} ></Alert>
     <div className="container">
-      <Form mode={mode}></Form>
+      <Form mode={mode} ></Form>
     </div>
     </>
   );
