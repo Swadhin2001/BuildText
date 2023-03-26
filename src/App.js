@@ -4,6 +4,16 @@ import Form from './components/Form';
 import Navbar from './components/Navbar';
 import Alert from './components/Alert';
 import React, {useState} from 'react'
+// import Colorpallate from './components/Colorpallate';
+import About from './components/About';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
+
+
 
 function App() {
   const[mode,setMode] = useState('light');
@@ -19,6 +29,9 @@ function App() {
     }, 3000);
   }
 
+  const color =(clr)=>{
+    document.body.style.backgroundColor = clr;
+  }
 
   const changemode=()=>{
     if (mode === 'light'){
@@ -36,11 +49,18 @@ function App() {
   }
   return (
     <>
-    <Navbar changemode={changemode} text={text} mode={mode}></Navbar>
+    <Router>
+    <Navbar changemode={changemode} text={text} mode={mode} color ={color}></Navbar>
     <Alert alertText={altext} alert={altext}></Alert>
     <div className="container">
-      <Form mode={mode} alertmsg={alertMsg}></Form>
+      <Routes>
+        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Form mode={mode} alertmsg={alertMsg}></Form>} />
+      </Routes>
     </div>
+    {/* <Form mode={mode} alertmsg={alertMsg}></Form> */}
+    {/* <Colorpallate color ={color}></Colorpallate> */}
+    </Router>
     </>
   );
 }
